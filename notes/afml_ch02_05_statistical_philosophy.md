@@ -46,7 +46,7 @@
 设逐笔记录为价格 $`p_n`$、成交量 $`v_n`$，上一根 bar 结束于 $`n_{k-1}`$。活动 bar 的一般形式为：
 
 ```math
-n_k=\inf\left\{n>n_{k-1}:
+n_k=\inf\left\{n\gt n_{k-1}:
 \sum_{j=n_{k-1}+1}^{n}a_j\ge B_k\right\}.
 ```
 
@@ -68,8 +68,8 @@ n_k=\inf\left\{n>n_{k-1}:
 ```math
 b_n=
 \begin{cases}
-1,&p_n>p_{n-1},\\
--1,&p_n<p_{n-1},\\
+1,&p_n\gt p_{n-1},\\
+-1,&p_n\lt p_{n-1},\\
 b_{n-1},&p_n=p_{n-1}.
 \end{cases}
 ```
@@ -141,8 +141,8 @@ r_i=\frac{P_{t_{i,0}+H}}{P_{t_{i,0}}}-1,
 \qquad
 y_i=
 \begin{cases}
-1,&r_i>k\widehat\sigma_i,\\
--1,&r_i<-k\widehat\sigma_i,\\
+1,&r_i\gt k\widehat\sigma_i,\\
+-1,&r_i\lt -k\widehat\sigma_i,\\
 0,&\text{otherwise}.
 \end{cases}
 ```
@@ -158,8 +158,8 @@ R_i(t)=s_i\left(\frac{P_t}{P_{t_{i,0}}}-1\right).
 ```
 
 ```math
-\tau_i^+=\inf\{t>t_{i,0}:R_i(t)\ge a_i\widehat\sigma_i\},\qquad
-\tau_i^-=\inf\{t>t_{i,0}:R_i(t)\le-b_i\widehat\sigma_i\}.
+\tau_i^+=\inf\{t\gt t_{i,0}:R_i(t)\ge a_i\widehat\sigma_i\},\qquad
+\tau_i^-=\inf\{t\gt t_{i,0}:R_i(t)\le-b_i\widehat\sigma_i\}.
 ```
 
 ```math
@@ -178,7 +178,7 @@ t_{i,1}=\min\{\tau_i^+,\tau_i^-,t_{i,0}+H_i\}.
 
 ```math
 Y_i^{\mathrm{meta}}
-=\mathbf 1_{\{R_i(t_{i,1})-c_i>0\}},\qquad
+=\mathbf 1_{\{R_i(t_{i,1})-c_i\gt 0\}},\qquad
 p_i=\Pr(Y_i^{\mathrm{meta}}=1\mid X_i,s_i).
 ```
 
@@ -187,9 +187,9 @@ p_i=\Pr(Y_i^{\mathrm{meta}}=1\mid X_i,s_i).
 次级模型的负类表示“过滤这笔原交易”，不等于反向交易。概率也不是天然仓位大小：在简化的二结果模型中，平均毛盈利为 $`G`$、平均毛亏损绝对值为 $`L`$、每笔成本为 $`c`$ 时：
 
 ```math
-\mathrm{EV}=pG-(1-p)L-c>0
+\mathrm{EV}=pG-(1-p)L-c\gt 0
 \quad\Longleftrightarrow\quad
-p>\frac{L+c}{G+L}.
+p\gt \frac{L+c}{G+L}.
 ```
 
 所以 0.5 不是普遍正确的执行阈值。现实盈亏幅度随状态变化，还需估计条件收益、尾部风险、容量与组合约束。第 3 章提供方向/执行分离的接口，并不完成整套仓位优化。
@@ -214,7 +214,7 @@ p>\frac{L+c}{G+L}.
 
 ```math
 c_t=\sum_{i=1}^{N}A_{t,i},\qquad
-u_{t,i}=\frac{A_{t,i}}{c_t}\quad(c_t>0),\qquad
+u_{t,i}=\frac{A_{t,i}}{c_t}\quad(c_t\gt 0),\qquad
 \bar u_i=\frac{\sum_tu_{t,i}}{\sum_t A_{t,i}}.
 ```
 
@@ -291,7 +291,7 @@ x_i=\sum_{j=1}^{i}\bar u_j,\qquad U=\sum_{j=1}^{N}\bar u_j.
 D(x)=
 \begin{cases}
 c+(1-c)x/U,&0\le c\le1,\\
-\max\left(0,\dfrac{x+cU}{(1+c)U}\right),&-1<c<0.
+\max\left(0,\dfrac{x+cU}{(1+c)U}\right),&-1\lt c\lt 0.
 \end{cases}
 ```
 
@@ -307,7 +307,7 @@ c 为一时不衰减；c 为零时线性增加；c 为负时，累计唯一性�
 
 类别平衡权重强调少数类，收益权重强调经济幅度，唯一性修正强调减少重复，时间衰减强调近期相关性。四种目的不同，机械连乘可能造成少量样本支配训练，或重复惩罚同一种重叠。
 
-加权训练输出的概率也未必等于真实部署频率。例如只做类别加权时，原始条件正类概率为 p，正负类权重分别为 a 和 b，加权目标的最优概率为：
+加权训练输出的概率也未必等于真实部署频率。例如只做类别加权时，原始条件正类概率为 p，正负类权重分别为 a 和 b，在加权对数损失下，最优概率为：
 
 ```math
 p_w=\frac{ap}{ap+b(1-p)}.
@@ -382,7 +382,7 @@ Z_t^{(d,K)}=\sum_{k=0}^{K}\omega_kX_{t-k},\qquad t\ge K.
 
 ```math
 S_K=\sum_{k=0}^{K}\omega_k
-=(-1)^K\binom{d-1}{K}>0.
+=(-1)^K\binom{d-1}{K}\gt 0.
 ```
 
 若输入是真正的随机游走：
