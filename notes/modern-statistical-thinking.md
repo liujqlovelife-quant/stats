@@ -1,7 +1,7 @@
 # 现代统计思想：复杂理论背后的统计哲学
 
-> 整理自“现代统计思想缺口”对话，合并重复论述，补充适用条件与理论联系。原对话的长回复在读取接口中存在截断，本文是基于可读取内容与明确主题要求的系统整理和补充，不是逐字转录。  
-> 主线：先明确目标与可识别性，再讨论有限样本如何学习，继而控制模型错误、选择和依赖，最后把不确定性转化为决策。  
+> 整理自“现代统计思想缺口”对话，合并重复论述，补充适用条件与理论联系。原对话的长回复在读取接口中存在截断，本文是基于可读取内容与明确主题要求的系统整理和补充，不是逐字转录。 
+> 主线：先明确目标与可识别性，再讨论有限样本如何学习，继而控制模型错误、选择和依赖，最后把不确定性转化为决策。 
 > 本文是一幅重要思想的体系图，不宣称穷尽统计学全部分支，也不把不同理论的保证混为一谈。
 
 ## 摘要
@@ -40,7 +40,7 @@ $$
 
 ### 1.1 观察到的数据不等于生成它的规律
 
-记样本为 $D_n=(Z_1,\ldots,Z_n)$，总体分布为 $P$。在独立同分布场景中，样本来自 $P^{\otimes n}$；时间序列、聚类样本和自适应实验则需要明确联合分布，不能仅凭相同边际分布就当作独立样本。
+记样本为 $D_n=(Z_1,\ldots,Z_n)$ ，总体分布为 $P$ 。在独立同分布场景中，样本来自 $P^{\otimes n}$ ；时间序列、聚类样本和自适应实验则需要明确联合分布，不能仅凭相同边际分布就当作独立样本。
 
 以均值为例：
 
@@ -60,7 +60,7 @@ $$
 
 若目标包含反事实，最初应定义在包含潜在结果的完整数据机制上；完成识别后，才能把它写成可观测分布的泛函。这个区别防止我们在符号上提前假定“目标已可识别”。
 
-条件均值 $m(x)=E[Y\mid X=x]$、条件分位数 $Q_q(Y\mid X=x)$、平均处理效应 $E[Y(1)-Y(0)]$ 与策略价值 $V(\pi)=E[Y(\pi(X))]$，并不是同一个对象。实际定义还应包括目标人群、时间窗口、观测单位、结果口径和行动成本。
+条件均值 $m(x)=E[Y\mid X=x]$ 、条件分位数 $Q_q(Y\mid X=x)$ 、平均处理效应 $E[Y(1)-Y(0)]$ 与策略价值 $V(\pi)=E[Y(\pi(X))]$ ，并不是同一个对象。实际定义还应包括目标人群、时间窗口、观测单位、结果口径和行动成本。
 
 ### 1.3 损失函数决定正在学习什么
 
@@ -73,7 +73,7 @@ $$
 绝对损失的最优解是条件中位数；分位数损失则对应条件分位数：
 
 $$
-\rho_q(u)=u\bigl(q-\mathbf 1\{u<0\}\bigr),\qquad
+\rho_q(u)=u\bigl(q-\mathbf 1\lbrace u\lt 0\rbrace \bigr),\qquad
 \underset{a}{\arg\min}\ E[\rho_q(Y-a)\mid X=x]=Q_q(Y\mid X=x),
 $$
 
@@ -87,7 +87,7 @@ $$
 
 ### 2.1 无限数据也不能解决所有问题
 
-设完整机制为 $Q$，可观测分布为 $P_{\mathrm{obs}}(Q)$，科学目标为 $\theta(Q)$。点识别要求：
+设完整机制为 $Q$ ，可观测分布为 $P_{\mathrm{obs}}(Q)$ ，科学目标为 $\theta(Q)$ 。点识别要求：
 
 $$
 P_{\mathrm{obs}}(Q_1)=P_{\mathrm{obs}}(Q_2)\ \Longrightarrow\ \theta(Q_1)=\theta(Q_2).
@@ -98,14 +98,14 @@ $$
 部分识别保留所有与数据及假设相容的值：
 
 $$
-\Theta_I(P_{\mathrm{obs}})=\{\theta(Q):P_{\mathrm{obs}}(Q)=P_{\mathrm{obs}},\ Q\in\mathcal Q\}.
+\Theta_I(P_{\mathrm{obs}})=\lbrace \theta(Q):P_{\mathrm{obs}}(Q)=P_{\mathrm{obs}},\ Q\in\mathcal Q\rbrace .
 $$
 
 识别集合可能是区间，也可能具有其他形状。它描述信息不足造成的范围；有限样本置信集合还要覆盖抽样误差，两者不能混同。
 
 ### 2.2 因果识别需要连接事实与反事实的假设
 
-二元处理记为 $A$，潜在结果为 $Y(1),Y(0)$。一致性要求实际结果对应实际接受的处理：
+二元处理记为 $A$ ，潜在结果为 $Y(1),Y(0)$ 。一致性要求实际结果对应实际接受的处理：
 
 $$
 Y=AY(1)+(1-A)Y(0).
@@ -114,7 +114,7 @@ $$
 若处理版本定义清楚，并满足适当的无干扰条件、条件可交换性与正值性：
 
 $$
-(Y(1),Y(0))\perp A\mid X,\qquad 0<P(A=1\mid X)<1,
+(Y(1),Y(0))\perp A\mid X,\qquad 0\lt P(A=1\mid X)\lt 1,
 $$
 
 则可识别平均处理效应：
@@ -146,7 +146,7 @@ $$
 
 ### 3.1 似然把数据转化为相对证据
 
-给定模型族 $p_\theta$，独立样本的似然与最大似然估计为：
+给定模型族 $p_\theta$ ，独立样本的似然与最大似然估计为：
 
 $$
 L(\theta;D_n)=\prod_{i=1}^np_\theta(Z_i),\qquad
@@ -181,7 +181,7 @@ $$
 
 ### 3.3 一致性、收敛速度与渐近正态性
 
-一致性意味着 $\hat\theta\overset{p}{\longrightarrow}\theta_0$，但没有说明有限样本下误差多大。正则估计量常满足：
+一致性意味着 $\hat\theta\overset{p}{\longrightarrow}\theta_0$ ，但没有说明有限样本下误差多大。正则估计量常满足：
 
 $$
 \sqrt n(\hat\theta-\theta_0)\overset{d}{\longrightarrow}N(0,V).
@@ -192,7 +192,7 @@ $$
 Delta 方法通过局部线性化传播不确定性：
 
 $$
-\sqrt n\{g(\hat\theta)-g(\theta_0)\}\overset{d}{\longrightarrow}
+\sqrt n\lbrace g(\hat\theta)-g(\theta_0)\rbrace \overset{d}{\longrightarrow}
 N\bigl(0,[g'(\theta_0)]^2V\bigr).
 $$
 
@@ -203,7 +203,7 @@ $$
 置信区间的覆盖概率是对重复抽样而言：
 
 $$
-P_\theta\{\theta\in C(D_n)\}\ge1-\alpha.
+P_\theta\lbrace \theta\in C(D_n)\rbrace \ge1-\alpha.
 $$
 
 数据已观察后，区间成为一个确定集合；频率学派不能仅凭这条保证就赋予固定参数一个后验概率。
@@ -214,7 +214,7 @@ $$
 P_\theta(p\le u)\le u,\qquad 0\le u\le1,\quad \theta\in\Theta_0.
 $$
 
-$p$ 值不是“零假设为真的概率”；不显著也不是证明无效。等效性检验、效应大小、区间和实际意义，回答的是不同问题。
+ $p$ 值不是“零假设为真的概率”；不显著也不是证明无效。等效性检验、效应大小、区间和实际意义，回答的是不同问题。
 
 ### 3.5 模型错误时估计什么
 
@@ -222,8 +222,8 @@ $p$ 值不是“零假设为真的概率”；不显著也不是证明无效。�
 
 $$
 V=A^{-1}BA^{-\mathsf T},\quad
-A=E[\nabla_\theta^2\ell(Z,\theta^*)],\quad
-B=\mathrm{Var}[\nabla_\theta\ell(Z,\theta^*)].
+A=E[\nabla_\theta^2\ell(Z,\theta^{\ast})],\quad
+B=\mathrm{Var}[\nabla_\theta\ell(Z,\theta^{\ast})].
 $$
 
 稳健标准误可以修正某些方差计算，却不能纠正错设导致的目标偏离、未观测混杂或样本选择。
@@ -237,7 +237,7 @@ $$
 贝叶斯更新为：
 
 $$
-p(\theta\mid D)=\frac{p(D\mid\theta)p(\theta)}{\int p(D\mid u)p(u)\,du}.
+p(\theta\mid D)=\frac{p(D\mid\theta)p(\theta)}{\int p(D\mid u)p(u)\thinspace du}.
 $$
 
 后验融合先验与似然，可信区间描述给定模型与数据后的参数概率。它不同于频率覆盖保证；某些正则大样本情形两者接近，但高维、弱识别、边界与强先验下未必如此。
@@ -280,10 +280,10 @@ $$
 E_\theta[(\hat\theta-\theta)^2]=\mathrm{Bias}_\theta(\hat\theta)^2+\mathrm{Var}_\theta(\hat\theta).
 $$
 
-无偏并非唯一目标。对 $X\sim N_p(\theta,\sigma^2I)$、已知 $\sigma^2$ 且 $p\ge3$，James–Stein 估计在总平方误差风险下优于直接使用 $X$：
+无偏并非唯一目标。对 $X\sim N_p(\theta,\sigma^2I)$ 、已知 $\sigma^2$ 且 $p\ge3$ ，James–Stein 估计在总平方误差风险下优于直接使用 $X$ ：
 
 $$
-\hat\theta_{\mathrm{JS}}=\left(1-\frac{(p-2)\sigma^2}{\|X\|_2^2}\right)X.
+\hat\theta_{\mathrm{JS}}=\left(1-\frac{(p-2)\sigma^2}{\Vert X\Vert _2^2}\right)X.
 $$
 
 这是联合风险结论，不保证每个坐标、每次样本都更好。它揭示的是：允许小偏差，可能大幅降低整体波动。
@@ -293,16 +293,16 @@ $$
 贝叶斯最优行动与极小极大规则分别为：
 
 $$
-a^*(D)=\underset{a}{\arg\min}\ E[L(\theta,a)\mid D],\qquad
-\delta^*=\underset{\delta}{\arg\min}\ \sup_{\theta\in\Theta}R(\theta,\delta).
+a^{\ast}(D)=\underset{a}{\arg\min}\ E[L(\theta,a)\mid D],\qquad
+\delta^{\ast}=\underset{\delta}{\arg\min}\ \sup_{\theta\in\Theta}R(\theta,\delta).
 $$
 
 前者对后验中的世界加权，后者关注指定参数集合中的最坏风险；两者都依赖损失如何定义。
 
-策略学习关心 $V(\pi^*)-V(\hat\pi)$，不必等同于预测 MSE。二元处理且已纳入成本时，若 $\tau(X)$ 表示净收益差，则错误行动的价值损失为：
+策略学习关心 $V(\pi^{\ast})-V(\hat\pi)$ ，不必等同于预测 MSE。二元处理且已纳入成本时，若 $\tau(X)$ 表示净收益差，则错误行动的价值损失为：
 
 $$
-V(\pi^*)-V(\hat\pi)=E\!\left[|\tau(X)|\,\mathbf1\{\hat\pi(X)\ne\pi^*(X)\}\right].
+V(\pi^{\ast})-V(\hat\pi)=E\left[|\tau(X)|\thinspace \mathbf1\lbrace \hat\pi(X)\ne\pi^{\ast}(X)\rbrace \right].
 $$
 
 决策边界附近更容易选错，但单次错误损失通常更小；不能简单说“边界附近误差总是最重要”。总体 regret 由误选概率和收益差共同决定。
@@ -317,10 +317,10 @@ $$
 
 $$
 \hat\beta=\underset{\beta}{\arg\min}
-\left\{\frac{1}{n}\sum_{i=1}^n(Y_i-X_i^\mathsf T\beta)^2+\lambda J(\beta)\right\}.
+\left\lbrace \frac{1}{n}\sum_{i=1}^n(Y_i-X_i^\mathsf T\beta)^2+\lambda J(\beta)\right\rbrace .
 $$
 
-Ridge 使用 $J(\beta)=\|\beta\|_2^2$，Lasso 使用 $J(\beta)=\|\beta\|_1$。前者平滑收缩，后者可产生稀疏解。平滑惩罚、低秩限制、树深度与早停也都限定可学习结构。
+Ridge 使用 $J(\beta)=\Vert \beta\Vert _2^2$ ，Lasso 使用 $J(\beta)=\Vert \beta\Vert _1$ 。前者平滑收缩，后者可产生稀疏解。平滑惩罚、低秩限制、树深度与早停也都限定可学习结构。
 
 正则化不是免费获得信息，而是用结构假设换取稳定性。稀疏性不正确、尺度未标准化或调参反复使用测试集，都可能使这种交换失效。
 
@@ -329,8 +329,8 @@ Ridge 使用 $J(\beta)=\|\beta\|_2^2$，Lasso 使用 $J(\beta)=\|\beta\|_1$。�
 若真实线性系数只有 $s$ 个非零项，在合适设计条件和噪声条件下，Lasso 的预测误差可达到如下量级：
 
 $$
-\frac{1}{n}\|X(\hat\beta-\beta_0)\|_2^2
-=O_p\!\left(\frac{\sigma^2s\log p}{n}\right).
+\frac{1}{n}\Vert X(\hat\beta-\beta_0)\Vert _2^2
+=O_p\left(\frac{\sigma^2s\log p}{n}\right).
 $$
 
 这不是无条件保证。稀疏结构、设计矩阵的几何性质和调参水平都关键；预测一致性也不等于支持集选择一致性。
@@ -354,7 +354,7 @@ $$
 对 $d$ 维输入上的 $\beta$ 阶平滑回归函数，典型非参数均方风险速率为：
 
 $$
-E[\|\hat m-m\|_{L_2(P_X)}^2]\asymp n^{-2\beta/(2\beta+d)},
+E[\Vert \hat m-m\Vert _{L_2(P_X)}^2]\asymp n^{-2\beta/(2\beta+d)},
 $$
 
 这里指适当 Hölder/Sobolev 类、设计与噪声条件下的典型极小极大情形，而非所有非参数方法的统一定律。维度增大使局部邻域中的信息迅速稀薄，这就是维数灾难的一个精确表达。
@@ -396,7 +396,7 @@ $$
 \left.\frac{d}{d\varepsilon}T((1-\varepsilon)P+\varepsilon\delta_z)\right|_{\varepsilon=0}.
 $$
 
-均值的影响函数是 $z-\mu$，不受界限约束。若中位数处密度为正，中位数有有界影响函数；其替换崩溃点接近二分之一，而均值只需一个任意极端的替换点就能被推到无穷远。
+均值的影响函数是 $z-\mu$ ，不受界限约束。若中位数处密度为正，中位数有有界影响函数；其替换崩溃点接近二分之一，而均值只需一个任意极端的替换点就能被推到无穷远。
 
 局部影响与崩溃点分别衡量微小扰动和较大污染，不能互相代替。
 
@@ -406,7 +406,7 @@ $$
 \rho_\delta(r)=
 \begin{cases}
 r^2/2,& |r|\le\delta,\\
-\delta(|r|-\delta/2),& |r|>\delta.
+\delta(|r|-\delta/2),& |r|\gt \delta.
 \end{cases}
 $$
 
@@ -419,25 +419,25 @@ $$
 对非负变量，若尾部满足严格渐近形式：
 
 $$
-P(Y>y)\sim Cy^{-\alpha},
+P(Y\gt y)\sim Cy^{-\alpha},
 $$
 
-则 $\alpha>1$ 才有有限均值，$\alpha>2$ 才有有限二阶矩。右偏直方图本身不足以证明幂律；有限上界也会改变矩存在性。
+则 $\alpha\gt 1$ 才有有限均值， $\alpha\gt 2$ 才有有限二阶矩。右偏直方图本身不足以证明幂律；有限上界也会改变矩存在性。
 
 若目标是总收入或期望损失，极大值可能正是目标的重要组成部分。删去它们、截尾或取对数会改变目标，必须说明是否以及如何补回尾部贡献：
 
 $$
-E[Y]=E[Y\mathbf1\{Y\le u\}]
-+P(Y>u)\left(u+E[Y-u\mid Y>u]\right).
+E[Y]=E[Y\mathbf1\lbrace Y\le u\rbrace ]
++P(Y\gt u)\left(u+E[Y-u\mid Y\gt u]\right).
 $$
 
 在相应吸引域条件下，高阈值超额分布可由广义 Pareto 分布近似：
 
 $$
-P(Y-u\le y\mid Y>u)\approx1-\left(1+\xi y/\beta_u\right)^{-1/\xi},
+P(Y-u\le y\mid Y\gt u)\approx1-\left(1+\xi y/\beta_u\right)^{-1/\xi},
 $$
 
-其中 $y\ge0$ 且 $1+\xi y/\beta_u>0$；$\xi=0$ 使用指数分布极限。阈值过低会增加近似偏差，过高则样本不足。极值理论提供有条件的尾部结构，不能在没有尾部数据时创造可靠外推。
+其中 $y\ge0$ 且 $1+\xi y/\beta_u\gt 0$ ； $\xi=0$ 使用指数分布极限。阈值过低会增加近似偏差，过高则样本不足。极值理论提供有条件的尾部结构，不能在没有尾部数据时创造可靠外推。
 
 ### 7.4 敏感性分析也是鲁棒性
 
@@ -455,10 +455,10 @@ $$
 
 $$
 \hat P_n=\frac{1}{n}\sum_{i=1}^n\delta_{Z_i},\qquad
-Z_1^*,\ldots,Z_n^*\mid D_n\sim\hat P_n.
+Z_1^{\ast},\ldots,Z_n^{\ast}\mid D_n\sim\hat P_n.
 $$
 
-再计算 $\hat\theta^*$，用其条件分布近似原估计量的抽样波动。其成立依赖统计量的正则性与重抽样机制是否正确。极值、边界、非光滑模型选择、无限方差等场景中，普通 bootstrap 可能失效。
+再计算 $\hat\theta^{\ast}$ ，用其条件分布近似原估计量的抽样波动。其成立依赖统计量的正则性与重抽样机制是否正确。极值、边界、非光滑模型选择、无限方差等场景中，普通 bootstrap 可能失效。
 
 依赖数据应考虑块 bootstrap 或聚类 bootstrap；不能打乱真实独立单位。若推断目标是整个分析程序的输出，重抽样原则上应考虑预处理、调参和选择；即使完整重跑，也不自动解决非正则性。
 
@@ -486,10 +486,10 @@ MCMC、变分推断与蒙特卡洛积分使复杂后验和期望可计算。MCMC
 
 ### 9.1 最大化会同时选择信号和有利噪声
 
-设 $\hat\theta_j=\theta_j+\varepsilon_j$，且每个噪声均值为零，则由最大值函数的凸性：
+设 $\hat\theta_j=\theta_j+\varepsilon_j$ ，且每个噪声均值为零，则由最大值函数的凸性：
 
 $$
-E\!\left[\max_j\hat\theta_j\right]\ge\max_j\theta_j.
+E\left[\max_j\hat\theta_j\right]\ge\max_j\theta_j.
 $$
 
 因此，最佳回测、最大分组效应和最高调参得分都可能偏乐观。选中对象的误差分布已不同于预先固定对象的误差分布。
@@ -498,17 +498,17 @@ $$
 
 ### 9.2 不同错误控制回答不同问题
 
-令 $V$ 为错误拒绝数，$R$ 为总拒绝数：
+令 $V$ 为错误拒绝数， $R$ 为总拒绝数：
 
 $$
 \mathrm{FWER}=P(V\ge1),\qquad
-\mathrm{FDR}=E\!\left[\frac{V}{\max(R,1)}\right].
+\mathrm{FDR}=E\left[\frac{V}{\max(R,1)}\right].
 $$
 
-Bonferroni 使用各检验阈值 $\alpha/m$，依赖有效边际 $p$ 值而不要求检验相互独立。Benjamini–Hochberg 方法排序 $p_{(1)}\le\cdots\le p_{(m)}$，选择：
+Bonferroni 使用各检验阈值 $\alpha/m$ ，依赖有效边际 $p$ 值而不要求检验相互独立。Benjamini–Hochberg 方法排序 $p_{(1)}\le\cdots\le p_{(m)}$ ，选择：
 
 $$
-k=\max\left\{i:p_{(i)}\le\frac{i}{m}q\right\},
+k=\max\left\lbrace i:p_{(i)}\le\frac{i}{m}q\right\rbrace ,
 $$
 
 没有满足项时不拒绝。在独立或特定正依赖条件下，它控制 FDR；任意依赖需要另行处理。
@@ -517,7 +517,7 @@ FDR 是随机发现集合中的错误比例的期望，不是每一个被选结�
 
 ### 9.3 自适应分析使问题随数据改变
 
-如果研究者看过数据后才选择假设 $H(D)$、子群或停止时间，固定假设下的校准可能不再适用。常见处理包括预先定义分析、样本拆分、选择后推断、同时置信界和专门的自适应数据分析方法。
+如果研究者看过数据后才选择假设 $H(D)$ 、子群或停止时间，固定假设下的校准可能不再适用。常见处理包括预先定义分析、样本拆分、选择后推断、同时置信界和专门的自适应数据分析方法。
 
 拆分会损失可用于某一步的样本量；选择后条件推断会改变条件化目标；多重调整可能降低功效。没有一种方法同时免费保留全部信息和全部灵活性。
 
@@ -529,7 +529,7 @@ FDR 是随机发现集合中的错误比例的期望，不是每一个被选结�
 
 ### 10.1 不必先估计整个世界
 
-半参数模型允许无限维未知分布，但关注有限维目标 $\theta(P)$。核心问题是：哪些分布方向会改变目标，哪些只是辅助变化？
+半参数模型允许无限维未知分布，但关注有限维目标 $\theta(P)$ 。核心问题是：哪些分布方向会改变目标，哪些只是辅助变化？
 
 对正则渐近线性估计量：
 
@@ -545,17 +545,17 @@ $$
 
 影响函数把复杂估计量的一阶波动压缩成可分析的平均。半参数理论中更一般的定义通过正则参数子模型及其得分给出；第 7 章的点污染导数是一种直观且在适当模型中适用的表达，不能在所有受限模型中无条件套用。
 
-有效影响函数是在相应切空间中代表目标导数的典范梯度。其二阶矩是根号样本量缩放后的半参数效率下界；原估计量的方差尺度约为该下界除以 $n$。这个结论针对指定模型下的正则估计量，不是对所有可能估计方法的逐点绝对禁令。
+有效影响函数是在相应切空间中代表目标导数的典范梯度。其二阶矩是根号样本量缩放后的半参数效率下界；原估计量的方差尺度约为该下界除以 $n$ 。这个结论针对指定模型下的正则估计量，不是对所有可能估计方法的逐点绝对禁令。
 
 ### 10.2 正交性限制辅助误差的传播
 
-设辅助函数为 $\eta$，估计矩满足：
+设辅助函数为 $\eta$ ，估计矩满足：
 
 $$
 E[\psi(Z;\theta_0,\eta_0)]=0.
 $$
 
-Neyman 正交性要求对允许方向 $h$：
+Neyman 正交性要求对允许方向 $h$ ：
 
 $$
 \left.\frac{d}{dr}E[\psi(Z;\theta_0,\eta_0+rh)]\right|_{r=0}=0.
@@ -565,11 +565,11 @@ $$
 
 ### 10.3 AIPW 把识别公式变成误差修正结构
 
-沿用第 2 章的识别条件，定义倾向概率 $e(x)=P(A=1\mid X=x)$。平均处理效应的有效影响函数为：
+沿用第 2 章的识别条件，定义倾向概率 $e(x)=P(A=1\mid X=x)$ 。平均处理效应的有效影响函数为：
 
 $$
-\phi(Z)=m_1(X)-m_0(X)+\frac{A\{Y-m_1(X)\}}{e(X)}
--\frac{(1-A)\{Y-m_0(X)\}}{1-e(X)}-\theta.
+\phi(Z)=m_1(X)-m_0(X)+\frac{A\lbrace Y-m_1(X)\rbrace }{e(X)}
+-\frac{(1-A)\lbrace Y-m_0(X)\rbrace }{1-e(X)}-\theta.
 $$
 
 用其他折训练的辅助函数代入，得到交叉拟合 AIPW 估计：
@@ -578,8 +578,8 @@ $$
 \hat\theta=\frac{1}{n}\sum_{i=1}^n
 \left[
 \hat m_1^{(-k(i))}(X_i)-\hat m_0^{(-k(i))}(X_i)
-+\frac{A_i\{Y_i-\hat m_1^{(-k(i))}(X_i)\}}{\hat e^{(-k(i))}(X_i)}
--\frac{(1-A_i)\{Y_i-\hat m_0^{(-k(i))}(X_i)\}}{1-\hat e^{(-k(i))}(X_i)}
++\frac{A_i\lbrace Y_i-\hat m_1^{(-k(i))}(X_i)\rbrace }{\hat e^{(-k(i))}(X_i)}
+-\frac{(1-A_i)\lbrace Y_i-\hat m_0^{(-k(i))}(X_i)\rbrace }{1-\hat e^{(-k(i))}(X_i)}
 \right].
 $$
 
@@ -588,8 +588,8 @@ $$
 为得到常见的根号样本量推断，一个典型充分条件是：
 
 $$
-\|\hat e-e\|_{L_2(P_X)}
-\left(\|\hat m_1-m_1\|_{L_2(P_X)}+\|\hat m_0-m_0\|_{L_2(P_X)}\right)
+\Vert \hat e-e\Vert _{L_2(P_X)}
+\left(\Vert \hat m_1-m_1\Vert _{L_2(P_X)}+\Vert \hat m_0-m_0\Vert _{L_2(P_X)}\right)
 =o_p(n^{-1/2}).
 $$
 
@@ -597,7 +597,7 @@ $$
 
 ### 10.4 从 ATE 到 CATE 和策略
 
-总体平均 $\theta$、条件效应 $\tau(x)$ 与最优策略具有不同难度。平均可以平滑局部噪声，精细异质性则需要更多局部信息；个体效应并不等于条件平均效应。
+总体平均 $\theta$ 、条件效应 $\tau(x)$ 与最优策略具有不同难度。平均可以平滑局部噪声，精细异质性则需要更多局部信息；个体效应并不等于条件平均效应。
 
 TMLE 通过针对目标的更新实现另一类影响函数修正；因果森林结合局部估计、随机划分和 honesty；策略学习则直接关注价值或 regret。它们共享“围绕目标设计”的思想，但各自保证并不能相互直接转移。
 
@@ -607,36 +607,36 @@ TMLE 通过针对目标的更新实现另一类影响函数修正；因果森林
 
 ### 11.1 观测过程属于统计模型
 
-设 $R=1$ 表示结果 $Y$ 被观测，$X$ 始终可见。这个简化场景中：
+设 $R=1$ 表示结果 $Y$ 被观测， $X$ 始终可见。这个简化场景中：
 
 $$
 \text{MCAR}:R\perp(X,Y),\qquad
 \text{MAR}:R\perp Y\mid X.
 $$
 
-若给定 $X$ 后观测概率仍依赖未见的 $Y$，则属于 MNAR。直接删除缺失记录通常改变样本组成；多重插补、逆概率加权和结果回归都需要相应观测机制假设。
+若给定 $X$ 后观测概率仍依赖未见的 $Y$ ，则属于 MNAR。直接删除缺失记录通常改变样本组成；多重插补、逆概率加权和结果回归都需要相应观测机制假设。
 
-MAR 与观测正值性成立时，设 $\pi_R(X)=P(R=1\mid X)$，可得：
+MAR 与观测正值性成立时，设 $\pi_R(X)=P(R=1\mid X)$ ，可得：
 
 $$
-E[Y]=E\!\left[\frac{RY}{\pi_R(X)}\right].
+E[Y]=E\left[\frac{RY}{\pi_R(X)}\right].
 $$
 
 这与因果加权具有相似结构：两者都需要修正哪些结果能被看见。MNAR 一般需要额外信息、机制模型、识别界或敏感性分析。
 
 ### 11.2 没有看到事件不等于事件不会发生
 
-设事件时间为 $T$、删失时间为 $C$，实际观察：
+设事件时间为 $T$ 、删失时间为 $C$ ，实际观察：
 
 $$
-\tilde T=\min(T,C),\qquad \Delta=\mathbf1\{T\le C\}.
+\tilde T=\min(T,C),\qquad \Delta=\mathbf1\lbrace T\le C\rbrace .
 $$
 
 生存函数与连续时间风险率为：
 
 $$
-S(t)=P(T>t),\qquad
-\lambda(t)=\lim_{h\downarrow0}\frac{P(t\le T<t+h\mid T\ge t)}{h}.
+S(t)=P(T\gt t),\qquad
+\lambda(t)=\lim_{h\downarrow0}\frac{P(t\le T\lt t+h\mid T\ge t)}{h}.
 $$
 
 在适当独立删失和支持条件下，Kaplan–Meier 等方法利用风险集估计生存规律。删失若依赖协变量，需要相应条件化或调整；研究末端缺乏随访支持时，不能直接可靠识别完整寿命均值。
@@ -649,7 +649,7 @@ $$
 
 ### 12.1 记录数量不等于信息数量
 
-对弱平稳序列，记自协方差为 $\gamma_k$、自相关为 $\rho_k$，则：
+对弱平稳序列，记自协方差为 $\gamma_k$ 、自相关为 $\rho_k$ ，则：
 
 $$
 \mathrm{Var}(\bar X_n)=\frac{\gamma_0}{n}
@@ -663,7 +663,7 @@ $$
 \mathrm{Var}(\bar X_n)\approx\frac{\Omega}{n}.
 $$
 
-可据此定义针对均值方差的近似有效样本量 $n_{\mathrm{eff}}\approx n\gamma_0/\Omega$。正相关通常降低它；负相关可能提高它。这个数依赖估计目标，不是数据集固有的唯一属性。长记忆、单位根和结构突变可能使上述近似不成立。
+可据此定义针对均值方差的近似有效样本量 $n_{\mathrm{eff}}\approx n\gamma_0/\Omega$ 。正相关通常降低它；负相关可能提高它。这个数依赖估计目标，不是数据集固有的唯一属性。长记忆、单位根和结构突变可能使上述近似不成立。
 
 ### 12.2 模型化依赖与修正推断
 
@@ -683,7 +683,7 @@ Purging 可去除与测试标签窗口重叠的训练记录，embargo 可在边�
 
 ### 13.1 泛化是经验风险与总体风险的连接
 
-对函数类 $\mathcal F$：
+对函数类 $\mathcal F$ ：
 
 $$
 R(f)=E[L(Y,f(X))],\qquad
@@ -712,7 +712,7 @@ $$
 KL 散度衡量分布区分的一种方式：
 
 $$
-D_{\mathrm{KL}}(P\|Q)=E_P\!\left[\log\frac{dP}{dQ}\right],
+D_{\mathrm{KL}}(P\Vert Q)=E_P\left[\log\frac{dP}{dQ}\right],
 $$
 
 其中要求相应绝对连续性，否则可能为无穷大。若两个机制的样本分布极难区分，却对应相距很远的目标，任何估计方法都难在二者上同时精确。
@@ -749,23 +749,23 @@ $$
 
 ### 14.3 共形预测提供边际覆盖保证
 
-Split conformal 先在训练集拟合预测模型，再用独立校准集得到 $n_{\mathrm{cal}}$ 个非一致性分数 $S_i$。令：
+Split conformal 先在训练集拟合预测模型，再用独立校准集得到 $n_{\mathrm{cal}}$ 个非一致性分数 $S_i$ 。令：
 
 $$
 k=\left\lceil(n_{\mathrm{cal}}+1)(1-\alpha)\right\rceil,\qquad
 \hat q=S_{(k)}.
 $$
 
-若 $k=n_{\mathrm{cal}}+1$，采用 $\hat q=+\infty$ 的约定。预测集合为：
+若 $k=n_{\mathrm{cal}}+1$ ，采用 $\hat q=+\infty$ 的约定。预测集合为：
 
 $$
-C_\alpha(x)=\{y:s(x,y)\le\hat q\}.
+C_\alpha(x)=\lbrace y:s(x,y)\le\hat q\rbrace .
 $$
 
 校准样本与新样本具有适当交换性时：
 
 $$
-P\{Y_{\mathrm{new}}\in C_\alpha(X_{\mathrm{new}})\}\ge1-\alpha.
+P\lbrace Y_{\mathrm{new}}\in C_\alpha(X_{\mathrm{new}})\rbrace \ge1-\alpha.
 $$
 
 这是对新输入和校准随机性的边际保证，不是每个 $x$ 的条件覆盖保证，也不是每个子群或每次给定校准集下都恰好覆盖。分布无关不等于无条件假设；漂移和时间依赖可能破坏交换性。相关构造、条件与局限见[共形预测教程](https://arxiv.org/abs/2107.07511)。
@@ -795,7 +795,7 @@ $$
 分布鲁棒优化可写为：
 
 $$
-a^*=\underset{a}{\arg\min}\ \sup_{Q\in\mathcal U(P)}E_Q[L(Z,a)].
+a^{\ast}=\underset{a}{\arg\min}\ \sup_{Q\in\mathcal U(P)}E_Q[L(Z,a)].
 $$
 
 关键是集合 $\mathcal U(P)$ 如何选：太小会漏掉真实变化，太大会过分保守。它表达“在哪些世界中仍可接受”，不能替代对实际漂移来源的理解。
@@ -806,7 +806,7 @@ $$
 
 ### 15.1 行动会影响随后看到的数据
 
-离线分析把数据当作既定输入；在线系统在第 $t$ 步根据历史 $\mathcal H_{t-1}$ 选择行动 $A_t$，再观察反馈：
+离线分析把数据当作既定输入；在线系统在第 $t$ 步根据历史 $\mathcal H_{t-1}$ 选择行动 $A_t$ ，再观察反馈：
 
 $$
 \mathcal H_{t-1}\longrightarrow A_t\longrightarrow Y_t\longrightarrow\mathcal H_t.
@@ -816,10 +816,10 @@ $$
 
 ### 15.2 遗憾刻画边学习边行动的代价
 
-对随机多臂老虎机，若行动 $a$ 的固定期望收益为 $\mu_a$，期望伪遗憾为：
+对随机多臂老虎机，若行动 $a$ 的固定期望收益为 $\mu_a$ ，期望伪遗憾为：
 
 $$
-\mathrm{Reg}_T=\sum_{t=1}^T E[\mu^*-\mu_{A_t}],\qquad \mu^*=\max_a\mu_a.
+\mathrm{Reg}_T=\sum_{t=1}^T E[\mu^{\ast}-\mu_{A_t}],\qquad \mu^{\ast}=\max_a\mu_a.
 $$
 
 UCB 用乐观界鼓励不确定但可能优良的行动，Thompson sampling 用后验随机化分配探索。它们的保证依赖反馈、平稳性和模型条件。
@@ -834,20 +834,20 @@ $$
 r_t+\gamma\max_a\hat Q(s_{t+1},a).
 $$
 
-对均值为零的估计噪声 $\varepsilon_a$：
+对均值为零的估计噪声 $\varepsilon_a$ ：
 
 $$
-E[\max_a\{Q_a+\varepsilon_a\}]\ge\max_aQ_a.
+E[\max_a\lbrace Q_a+\varepsilon_a\rbrace ]\ge\max_aQ_a.
 $$
 
 这与筛选最高回测或最大处理效应的结构相同。Double Q-learning/Double DQN 将行动选择与评价分开以减轻最大化偏差；实际网络误差仍可能相关，不能理解为彻底消除所有偏差。原始算法动机见[Double DQN 论文](https://arxiv.org/abs/1509.06461)。
 
 ### 15.4 离线策略评价需要记录探索机制
 
-上下文 bandit 中，若日志策略概率为 $b(a\mid x)$、目标策略为 $\pi(a\mid x)$，在一致性、适当无混杂和支持条件下：
+上下文 bandit 中，若日志策略概率为 $b(a\mid x)$ 、目标策略为 $\pi(a\mid x)$ ，在一致性、适当无混杂和支持条件下：
 
 $$
-V(\pi)=E_b\!\left[\frac{\pi(A\mid X)}{b(A\mid X)}Y\right].
+V(\pi)=E_b\left[\frac{\pi(A\mid X)}{b(A\mid X)}Y\right].
 $$
 
 若目标行动在日志中从未被选择，评价无法只靠权重完成。极小日志概率会增加方差，截断权重引入偏差；双重稳健策略评价同样需要明确模型与支持条件。这个单步公式不能直接替代多步强化学习的轨迹或状态分布修正。
@@ -857,13 +857,13 @@ $$
 固定样本量置信区间通常不能随意反复查看并在有利时停止。置信序列追求同时覆盖：
 
 $$
-P_\theta\{\theta\in C_t\text{ for all }t\ge1\}\ge1-\alpha.
+P_\theta\lbrace \theta\in C_t\text{ for all }t\ge1\rbrace \ge1-\alpha.
 $$
 
-若零假设下非负过程 $M_t$ 是适当的超鞅且 $E[M_0]\le1$，Ville 不等式给出：
+若零假设下非负过程 $M_t$ 是适当的超鞅且 $E[M_0]\le1$ ，Ville 不等式给出：
 
 $$
-P_{H_0}\left\{\sup_{t\ge0}M_t\ge1/\alpha\right\}\le\alpha.
+P_{H_0}\left\lbrace \sup_{t\ge0}M_t\ge1/\alpha\right\rbrace \le\alpha.
 $$
 
 这为 anytime-valid 检验与 e-process 提供基础。序贯方法将停止规则纳入设计，不意味着可以忽略数据依赖或把任意固定时点统计量当作有效过程。[时间一致置信序列研究](https://arxiv.org/abs/1810.08240)给出了系统构造。
@@ -880,7 +880,7 @@ $$
 D\longrightarrow\hat\eta\longrightarrow\hat\theta\longrightarrow\hat\pi\longrightarrow U.
 $$
 
-这里 $\hat\eta$ 是辅助模型，$\hat\theta$ 是目标量的估计，$\hat\pi$ 是行动规则，$U$ 是最终效用。不同理论保护不同环节：
+这里 $\hat\eta$ 是辅助模型， $\hat\theta$ 是目标量的估计， $\hat\pi$ 是行动规则， $U$ 是最终效用。不同理论保护不同环节：
 
 | 环节 | 核心问题 | 代表思想 |
 |---|---|---|
